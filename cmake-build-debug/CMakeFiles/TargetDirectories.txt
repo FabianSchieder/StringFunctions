@@ -1,0 +1,3 @@
+F:/Coden/StringFunctions/cmake-build-debug/CMakeFiles/StringFunctions.dir
+F:/Coden/StringFunctions/cmake-build-debug/CMakeFiles/edit_cache.dir
+F:/Coden/StringFunctions/cmake-build-debug/CMakeFiles/rebuild_cache.dir
