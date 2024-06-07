@@ -1,46 +1,67 @@
 #include <stdio.h>
+#include <stdlib.h>
 
-int strlen(const char* string);
+size_t strlen(const char* string);
 char* strcpy(char* dest, const char* src);
 char* strcat(char* dest, const char* src);
 int strcmp(char* str1, char* str2);
 
 int main(void)
 {
-    char string[] = "Fabian";
+//---------------------------------------------strlen()--------------------------------------------------
 
-    int size = strlen(string);
+    char* string = malloc(7 * sizeof(char));
+    strcpy(string, "Fabian");
+
+    size_t size = strlen(string);
     printf("Das Wort ist %d Zeichen lang.", size);
 
-    char string1[] = "Fabian";
-    char string2[strlen(string1)];
+//---------------------------------------------strcpy()--------------------------------------------------
 
+    char* string1 = malloc(7 * sizeof(char));
+    strcpy(string1, "Fabian");
+
+    char* string2 = malloc(strlen(string1) + 1);
     strcpy(string2, string1);
 
     printf("\nKopie: %s", string2);
 
-    char dest[] = "Schieder";
-    char src[] = "Fabian";
+//---------------------------------------------strcat()--------------------------------------------------
 
+    char* dest = malloc(9 * sizeof(char));
+    strcpy(dest, "Schieder");
+
+    char* src = malloc(7 * sizeof(char));
+    strcpy(src, "Fabian");
+
+    dest = realloc(dest, strlen(dest) + strlen(src) + 1);
     strcat(dest, src);
     printf("\nZusammengehaengt: %s", dest);
-    
-    char str1[] = "Fabian";
-    char str2[] = "Fabias";
 
-    if(strcmp(str1, str2) == 0)
-    {
-        printf("\nDie Strings sind gleich.");
-    }
-    else if(strcmp(str1, str2) == -1)
-    {
-        printf("\nDie Strings sind nicht gleich.");
-    }
+//---------------------------------------------strcpm()--------------------------------------------------
+
+    char* str1 = malloc(7 * sizeof(char));
+    strcpy(str1, "Fabian");
+
+    char* str2 = malloc(7 * sizeof(char));
+    strcpy(str2, "Fasians");
+
+    printf("\nUnterschiede: %d", strcmp(str1, str2));
+
+    //-----------------------------------------------------------------------------------------------
+
+    free(string);
+    free(string1);
+    free(string2);
+    free(dest);
+    free(src);
+    free(str1);
+    free(str2);
 
     return 0;
 }
 
-int strlen(const char* string)
+size_t strlen(const char* string)
 {
     int counter = 0;
 
@@ -82,18 +103,22 @@ char* strcat(char* dest, const char* src)
 
 int strcmp(char* str1, char* str2)
 {
-   if(strlen(str1) != strlen(str2))
-   {
-       return -1;
-   }
+    int diff = 0;
+    size_t length = strlen(str1);
+    diff = strlen(str2) - strlen(str1);
+    if(length > strlen(str2))
+    {
+        length = strlen(str2);
+        diff = strlen(str1) - strlen(str2);
+    }
 
-    for(int i = 0; i < strlen(str1); i++)
+    for(int i = 0; i < length; i++)
     {
         if(str1[i] != str2[i])
         {
-            return -1;
+            diff++;
         }
     }
 
-    return 0;
+    return diff;
 }
