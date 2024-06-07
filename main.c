@@ -7,6 +7,7 @@ char* strcat(char* dest, const char* src);
 int strcmp(char* str1, char* str2);
 char* createOnHeap(size_t, const char*);
 void checkPointer(void* pointer);
+void freeHeap(char **pointers, int count);
 
 int main(void)
 {
@@ -41,13 +42,8 @@ int main(void)
 
 //---free()
 
-    free(string);
-    free(string1);
-    free(string2);
-    free(dest);
-    free(src);
-    free(str1);
-    free(str2);
+    char* pointersToFree[] = {string, string1, string2, dest, src, str1, str2};
+    freeHeap(pointersToFree, sizeof(pointersToFree) / sizeof(char*));
 
     return 0;
 }
@@ -133,10 +129,12 @@ void checkPointer(void* pointer)
         printf("Es ist ein Fehler bei einem Pointer aufgetreten!");
         exit(1);
     }
+}
 
-    if(strlen(pointer) == 0)
+void freeHeap(char** pointers, int count)
+{
+    for(int i = 0; i < count; i++)
     {
-        printf("Ein Pointer zeigt auf nichts!");
-        exit(1);
+        free(pointers[i]);
     }
 }
