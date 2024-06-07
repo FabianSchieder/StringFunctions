@@ -45,6 +45,7 @@ int main(void)
     char* pointersToFree[] = {string, string1, string2, dest, src, str1, str2};
     freeHeap(pointersToFree, sizeof(pointersToFree) / sizeof(char*));
 
+    system("pause");
     return 0;
 }
 
