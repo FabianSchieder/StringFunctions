@@ -14,7 +14,7 @@ int main(void)
     strcpy(string, "Fabian");
 
     size_t size = strlen(string);
-    printf("Das Wort ist %d Zeichen lang.", size);
+    printf("\nLaenge:            %d", size);
 
 //---------------------------------------------strcpy()--------------------------------------------------
 
@@ -24,7 +24,7 @@ int main(void)
     char* string2 = malloc(strlen(string1) + 1);
     strcpy(string2, string1);
 
-    printf("\nKopie: %s", string2);
+    printf("\nKopie:             %s", string2);
 
 //---------------------------------------------strcat()--------------------------------------------------
 
@@ -36,7 +36,7 @@ int main(void)
 
     dest = realloc(dest, strlen(dest) + strlen(src) + 1);
     strcat(dest, src);
-    printf("\nZusammengehaengt: %s", dest);
+    printf("\nZusammengehaengt:  %s", dest);
 
 //---------------------------------------------strcpm()--------------------------------------------------
 
@@ -46,7 +46,7 @@ int main(void)
     char* str2 = malloc(7 * sizeof(char));
     strcpy(str2, "Fasians");
 
-    printf("\nUnterschiede: %d", strcmp(str1, str2));
+    printf("\nUnterschiede:      %d\n", strcmp(str1, str2));
 
     //-----------------------------------------------------------------------------------------------
 
@@ -106,6 +106,7 @@ int strcmp(char* str1, char* str2)
     int diff = 0;
     size_t length = strlen(str1);
     diff = strlen(str2) - strlen(str1);
+    
     if(length > strlen(str2))
     {
         length = strlen(str2);

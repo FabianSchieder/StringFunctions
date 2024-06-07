@@ -1,0 +1,27 @@
+# ninja log v6
+4	61	7394884405838668	CMakeFiles/StringFunctions.dir/main.c.obj	8ccc3caffa06ddca
+61	126	7394884406411092	StringFunctions.exe	f954b33c3848f612
+6	75	7394884470126340	CMakeFiles/StringFunctions.dir/main.c.obj	8ccc3caffa06ddca
+75	143	7394884470816962	StringFunctions.exe	f954b33c3848f612
+6	71	7394884499195319	CMakeFiles/StringFunctions.dir/main.c.obj	8ccc3caffa06ddca
+71	145	7394884499848727	StringFunctions.exe	f954b33c3848f612
+5	67	7394884528090149	CMakeFiles/StringFunctions.dir/main.c.obj	8ccc3caffa06ddca
+68	134	7394884528718504	StringFunctions.exe	f954b33c3848f612
+5	64	7394884562052005	CMakeFiles/StringFunctions.dir/main.c.obj	8ccc3caffa06ddca
+64	129	7394884562640573	StringFunctions.exe	f954b33c3848f612
+4	62	7394884646475351	CMakeFiles/StringFunctions.dir/main.c.obj	8ccc3caffa06ddca
+63	127	7394884647056972	StringFunctions.exe	f954b33c3848f612
+4	61	7394884688944424	CMakeFiles/StringFunctions.dir/main.c.obj	8ccc3caffa06ddca
+62	128	7394884689528933	StringFunctions.exe	f954b33c3848f612
+5	62	7394884747511299	CMakeFiles/StringFunctions.dir/main.c.obj	8ccc3caffa06ddca
+63	127	7394884748096822	StringFunctions.exe	f954b33c3848f612
+4	61	7394884792617751	CMakeFiles/StringFunctions.dir/main.c.obj	8ccc3caffa06ddca
+61	125	7394884793193634	StringFunctions.exe	f954b33c3848f612
+4	62	7394884850262534	CMakeFiles/StringFunctions.dir/main.c.obj	8ccc3caffa06ddca
+62	126	7394884850836136	StringFunctions.exe	f954b33c3848f612
+4	62	7394884872891954	CMakeFiles/StringFunctions.dir/main.c.obj	8ccc3caffa06ddca
+62	129	7394884873467689	StringFunctions.exe	f954b33c3848f612
+4	63	7394885009402516	CMakeFiles/StringFunctions.dir/main.c.obj	8ccc3caffa06ddca
+63	132	7394885009987872	StringFunctions.exe	f954b33c3848f612
+4	62	7394885092285925	CMakeFiles/StringFunctions.dir/main.c.obj	8ccc3caffa06ddca
+62	129	7394885092871448	StringFunctions.exe	f954b33c3848f612
