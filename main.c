@@ -1,11 +1,11 @@
 #include <stdio.h>
 
-int strlen(char* string);
-void strcpy(char* dest, char* src);
-void strcat(char* dest, char* src);
+int strlen(const char* string);
+char* strcpy(char* dest, const char* src);
+char* strcat(char* dest, const char* src);
 int strcmp(char* str1, char* str2);
 
-int main()
+int main(void)
 {
     char string[] = "Fabian";
 
@@ -23,12 +23,24 @@ int main()
     char src[] = "Fabian";
 
     strcat(dest, src);
-    printf("\nZusammengehaengt: %s", string1);
+    printf("\nZusammengehaengt: %s", dest);
+    
+    char str1[] = "Fabian";
+    char str2[] = "Fabias";
+
+    if(strcmp(str1, str2) == 0)
+    {
+        printf("\nDie Strings sind gleich.");
+    }
+    else if(strcmp(str1, str2) == -1)
+    {
+        printf("\nDie Strings sind nicht gleich.");
+    }
 
     return 0;
 }
 
-int strlen(char* string)
+int strlen(const char* string)
 {
     int counter = 0;
 
@@ -40,7 +52,7 @@ int strlen(char* string)
     return counter;
 }
 
-void strcpy(char* dest, char* src)
+char* strcpy(char* dest, const char* src)
 {
     int i = 0;
     for(i; src[i] != '\0'; i++)
@@ -49,15 +61,39 @@ void strcpy(char* dest, char* src)
     }
 
     dest[i + 1] = '\0';
+
+    return dest;
 }
 
-void strcat(char* dest, char* src)
+char* strcat(char* dest, const char* src)
 {
+    size_t length = strlen(dest);
     int i = 0;
-    for(i; i < strlen(src); i++)
+
+    for(i; src[i] != '\0'; i++)
     {
-        dest[strlen(dest) + i + 1] += src[i];
+        dest[length + i] = src[i];
     }
 
-    dest[i + 1] = '\0';
+    dest[length + i] = '\0';
+
+    return dest;
+}
+
+int strcmp(char* str1, char* str2)
+{
+   if(strlen(str1) != strlen(str2))
+   {
+       return -1;
+   }
+
+    for(int i = 0; i < strlen(str1); i++)
+    {
+        if(str1[i] != str2[i])
+        {
+            return -1;
+        }
+    }
+
+    return 0;
 }
