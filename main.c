@@ -5,50 +5,41 @@ size_t strlen(const char* string);
 char* strcpy(char* dest, const char* src);
 char* strcat(char* dest, const char* src);
 int strcmp(char* str1, char* str2);
+char* createOnHeap(size_t, const char*);
+void checkPointer(void* pointer);
 
 int main(void)
 {
-//---------------------------------------------strlen()--------------------------------------------------
+//---strlen()
 
-    char* string = malloc(7 * sizeof(char));
-    strcpy(string, "Fabian");
+    char* string = createOnHeap(7, "Fabian");
 
-    size_t size = strlen(string);
-    printf("\nLaenge:            %d", size);
+    printf("\nLaenge:            %llu", strlen(string));
 
-//---------------------------------------------strcpy()--------------------------------------------------
+//---strcpy()
 
-    char* string1 = malloc(7 * sizeof(char));
-    strcpy(string1, "Fabian");
-
-    char* string2 = malloc(strlen(string1) + 1);
-    strcpy(string2, string1);
+    char* string1 = createOnHeap(7, "Fabian");
+    char* string2 = strcpy(createOnHeap(7, ""), string1);
 
     printf("\nKopie:             %s", string2);
 
-//---------------------------------------------strcat()--------------------------------------------------
+//---strcat()
 
-    char* dest = malloc(9 * sizeof(char));
-    strcpy(dest, "Schieder");
+    char* src = createOnHeap(7, "Schieder");
+    char* dest;
+    dest = createOnHeap(strlen(src) + 7 + 1, "Fabian");
 
-    char* src = malloc(7 * sizeof(char));
-    strcpy(src, "Fabian");
-
-    dest = realloc(dest, strlen(dest) + strlen(src) + 1);
     strcat(dest, src);
     printf("\nZusammengehaengt:  %s", dest);
 
-//---------------------------------------------strcpm()--------------------------------------------------
+//---strcmp()
 
-    char* str1 = malloc(7 * sizeof(char));
-    strcpy(str1, "Fabian");
-
-    char* str2 = malloc(7 * sizeof(char));
-    strcpy(str2, "Fasians");
+    char* str1 = createOnHeap(7, "Fabian");
+    char* str2 = createOnHeap(7, "Fasians");
 
     printf("\nUnterschiede:      %d\n", strcmp(str1, str2));
 
-    //-----------------------------------------------------------------------------------------------
+//---free()
 
     free(string);
     free(string1);
@@ -60,6 +51,7 @@ int main(void)
 
     return 0;
 }
+
 
 size_t strlen(const char* string)
 {
@@ -76,12 +68,12 @@ size_t strlen(const char* string)
 char* strcpy(char* dest, const char* src)
 {
     int i = 0;
-    for(i; src[i] != '\0'; i++)
+    for(; src[i] != '\0'; i++)
     {
         dest[i] = src[i];
     }
 
-    dest[i + 1] = '\0';
+    dest[i] = '\0';
 
     return dest;
 }
@@ -91,7 +83,7 @@ char* strcat(char* dest, const char* src)
     size_t length = strlen(dest);
     int i = 0;
 
-    for(i; src[i] != '\0'; i++)
+    for(; src[i] != '\0'; i++)
     {
         dest[length + i] = src[i];
     }
@@ -106,7 +98,7 @@ int strcmp(char* str1, char* str2)
     int diff = 0;
     size_t length = strlen(str1);
     diff = strlen(str2) - strlen(str1);
-    
+
     if(length > strlen(str2))
     {
         length = strlen(str2);
@@ -122,4 +114,29 @@ int strcmp(char* str1, char* str2)
     }
 
     return diff;
+}
+
+char* createOnHeap(size_t size, const char* string)
+{
+    char* array = malloc(size * sizeof(char));
+    strcpy(array, string);
+
+    checkPointer(array);
+
+    return array;
+}
+
+void checkPointer(void* pointer)
+{
+    if(pointer == NULL)
+    {
+        printf("Es ist ein Fehler bei einem Pointer aufgetreten!");
+        exit(1);
+    }
+
+    if(strlen(pointer) == 0)
+    {
+        printf("Ein Pointer zeigt auf nichts!");
+        exit(1);
+    }
 }
