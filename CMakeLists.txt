@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.24)
 project(StringFunctions C)
 
-set(CMAKE_C_STANDARD 11)
+set(CMAKE_C_STANDARD 23)
 
 add_executable(StringFunctions main.c)

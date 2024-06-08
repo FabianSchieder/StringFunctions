@@ -19,7 +19,7 @@ int main(void)
     printf("\nLaenge:            %llu", strlen(string));
     printf("\nKopie:             %s", string2);
     printf("\nZusammengehaengt:  %s", dest);
-    printf("\nUnterschiede:      %d\n", strcmp(string, dest));
+    printf("\nUnterschiede:      %d\n", strcmp(string, string1));
 
     free(string);
     free(string1);

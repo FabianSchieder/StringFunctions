@@ -51,7 +51,7 @@ build cmake_object_order_depends_target_StringFunctions: phony || CMakeFiles/Str
 
 build CMakeFiles/StringFunctions.dir/main.c.obj: C_COMPILER__StringFunctions_unscanned_Debug F$:/Coden/StringFunctions/main.c || cmake_object_order_depends_target_StringFunctions
   DEP_FILE = CMakeFiles\StringFunctions.dir\main.c.obj.d
-  FLAGS = -g -std=gnu11 -fdiagnostics-color=always
+  FLAGS = -g -std=gnu2x -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles\StringFunctions.dir
   OBJECT_FILE_DIR = CMakeFiles\StringFunctions.dir
 
