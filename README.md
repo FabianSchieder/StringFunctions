@@ -131,40 +131,21 @@ void freeHeap(char** pointers, int count)
 ```c
 int main(void)
 {
-//---strlen()
-
     char* string = createOnHeap(7, "Fabian");
+    char* string1 = createOnHeap(7, "Schieder");
+    char* string2 = strcpy(createOnHeap(7, ""), string);
+    char* dest = createOnHeap(strlen(string) + 7 + 1, "Fabian");
+    strcat(dest, string1);
 
     printf("\nLaenge:            %llu", strlen(string));
-
-//---strcpy()
-
-    char* string1 = createOnHeap(7, "Fabian");
-    char* string2 = strcpy(createOnHeap(7, ""), string1);
-
     printf("\nKopie:             %s", string2);
-
-//---strcat()
-
-    char* src = createOnHeap(7, "Schieder");
-    char* dest;
-    dest = createOnHeap(strlen(src) + 7 + 1, "Fabian");
-
-    strcat(dest, src);
     printf("\nZusammengehaengt:  %s", dest);
+    printf("\nUnterschiede:      %d\n", strcmp(string, dest));
 
-//---strcmp()
+    free(string);
+    free(string1);
+    free(string2);
 
-    char* str1 = createOnHeap(7, "Fabian");
-    char* str2 = createOnHeap(7, "Fasians");
-
-    printf("\nUnterschiede:      %d\n", strcmp(str1, str2));
-
-//---free()
-
-    char* pointersToFree[] = {string, string1, string2, dest, src, str1, str2};
-    freeHeap(pointersToFree, sizeof(pointersToFree) / sizeof(char*));
-
-    return 0;
+    return EXIT_SUCCESS;
 }
 ```
