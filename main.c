@@ -21,9 +21,7 @@ int main(void)
     printf("\nZusammengehaengt:  %s", dest);
     printf("\nUnterschiede:      %d\n", strcmp(string, string1));
 
-    free(string);
-    free(string1);
-    free(string2);
+    free(string), free(string1), free(string2);
 
     return EXIT_SUCCESS;
 }
