@@ -7,14 +7,12 @@ char* strcat(char* dest, const char* src);
 int strcmp(char* str1, char* str2);
 char* createOnHeap(size_t, const char*);
 void checkPointer(void* pointer);
-void freeHeap(char **pointers, int count);
 
 int main(void)
 {
 //---strlen()
 
     char* string = createOnHeap(7, "Fabian");
-
     printf("\nLaenge:            %llu", strlen(string));
 
 //---strcpy()
@@ -36,16 +34,21 @@ int main(void)
 //---strcmp()
 
     char* str1 = createOnHeap(7, "Fabian");
-    char* str2 = createOnHeap(7, "Fasians");
+    char* str2 = createOnHeap(7, "Fasier");
 
     printf("\nUnterschiede:      %d\n", strcmp(str1, str2));
 
 //---free()
 
-    char* pointersToFree[] = {string, string1, string2, dest, src, str1, str2};
-    freeHeap(pointersToFree, sizeof(pointersToFree) / sizeof(char*));
+    free(string);
+    free(string1);
+    free(string2);
+    free(dest);
+    free(src);
+    free(str1);
+    free(str2);
 
-    return 0;
+    return EXIT_SUCCESS;
 }
 
 
@@ -128,13 +131,5 @@ void checkPointer(void* pointer)
     {
         printf("Es ist ein Fehler bei einem Pointer aufgetreten!");
         exit(1);
-    }
-}
-
-void freeHeap(char** pointers, int count)
-{
-    for(int i = 0; i < count; i++)
-    {
-        free(pointers[i]);
     }
 }
