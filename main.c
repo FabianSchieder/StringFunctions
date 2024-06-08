@@ -107,6 +107,6 @@ void checkPointer(void* pointer)
     if(pointer == NULL)
     {
         printf("Es ist ein Fehler bei einem Pointer aufgetreten!");
-        exit(1);
+        exit(EXIT_FAILURE);
     }
 }
