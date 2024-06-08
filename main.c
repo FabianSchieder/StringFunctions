@@ -10,43 +10,20 @@ void checkPointer(void* pointer);
 
 int main(void)
 {
-//---strlen()
-
     char* string = createOnHeap(7, "Fabian");
+    char* string1 = createOnHeap(7, "Schieder");
+    char* string2 = strcpy(createOnHeap(7, ""), string);
+    char* dest = createOnHeap(strlen(string) + 7 + 1, "Fabian");
+    strcat(dest, string1);
+
     printf("\nLaenge:            %llu", strlen(string));
-
-//---strcpy()
-
-    char* string1 = createOnHeap(7, "Fabian");
-    char* string2 = strcpy(createOnHeap(7, ""), string1);
-
     printf("\nKopie:             %s", string2);
-
-//---strcat()
-
-    char* src = createOnHeap(7, "Schieder");
-    char* dest;
-    dest = createOnHeap(strlen(src) + 7 + 1, "Fabian");
-
-    strcat(dest, src);
     printf("\nZusammengehaengt:  %s", dest);
-
-//---strcmp()
-
-    char* str1 = createOnHeap(7, "Fabian");
-    char* str2 = createOnHeap(7, "Fasier");
-
-    printf("\nUnterschiede:      %d\n", strcmp(str1, str2));
-
-//---free()
+    printf("\nUnterschiede:      %d\n", strcmp(string, dest));
 
     free(string);
     free(string1);
     free(string2);
-    free(dest);
-    free(src);
-    free(str1);
-    free(str2);
 
     return EXIT_SUCCESS;
 }
