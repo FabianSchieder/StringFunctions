@@ -13,7 +13,7 @@ int main(void)
     char* string = createOnHeap(7, "Fabian");
     char* string1 = createOnHeap(7, "Schieder");
     char* string2 = strcpy(createOnHeap(7, ""), string);
-    char* dest = createOnHeap(strlen(string) + strlen(string1) + 1, "Fabian");
+    char* dest = createOnHeap(strlen(string) + strlen(string1) + 1, string);
     strcat(dest, string1);
 
     printf("\nLaenge:            %llu", strlen(string));
